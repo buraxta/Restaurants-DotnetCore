@@ -3,24 +3,23 @@ using Restaurants.Domain.Entities;
 
 namespace Restaurants.Infrastructure.Persistence;
 
-internal class RestaurantsDbContext : DbContext
+internal class RestaurantsDbContext(DbContextOptions<RestaurantsDbContext> options) : DbContext(options)
 {
-    public RestaurantsDbContext()
-    {
-    }
-    public RestaurantsDbContext(DbContextOptions<RestaurantsDbContext> options): base(options)
-    {
-         
-    }
     internal DbSet<Restaurant> Restaurants { get; set; }
     internal DbSet<Dish> Dishes { get; set; }
+
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //{
+    //    base.OnConfiguring(optionsBuilder);
+    //    optionsBuilder.UseSqlServer("Server=BURAXTA\\SQLEXPRESS;Database=RestaurantsDb;Trusted_Connection=True;TrustServerCertificate=True");
+    //}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.Entity<Restaurant>()
-            .OwnsOne(r => r.Adress);
+            .OwnsOne(r => r.Address);
 
         modelBuilder.Entity<Restaurant>()
             .HasMany(r => r.Dishes)
