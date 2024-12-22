@@ -482,3 +482,7 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+/Restaurants.API/Controllers/WeatherForecastService.cs
+/Restaurants.API/Controllers/WeatherForecastController.cs
+/Restaurants.API/Controllers/IWeatherForecastService.cs
+/Restaurants.API/WeatherForecast.cs
