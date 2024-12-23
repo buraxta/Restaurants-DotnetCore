@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Restaurants.Application.Restaurants;
+using Restaurants.Application.Restaurants.Dtos;
 
 namespace Restaurants.API.Controllers;
 
 [ApiController]
 [Route("api/restaurants")]
-public class RestaurantsController(IRestaurantsService restaurantsService): ControllerBase
+public class RestaurantsController(IRestaurantsService restaurantsService) : ControllerBase
 {
     [HttpGet]
     public async Task<IActionResult> GetAll()
@@ -23,6 +24,14 @@ public class RestaurantsController(IRestaurantsService restaurantsService): Cont
             return NotFound();
         }
         return Ok(restaurant);
+    }
 
-    } 
+    [HttpPost]
+    public async Task<IActionResult> CreateRestaurant([FromBody] CreateRestaurantDto createRestaurantDto)
+    {
+        // Create a new restaurant
+        int id = await restaurantsService.Create(createRestaurantDto);
+        return CreatedAtAction(nameof(GetById), new { id }, null);
+    }
+
 }

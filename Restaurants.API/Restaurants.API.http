@@ -12,3 +12,20 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants
 GET {{Restaurants.API_HostAddress}}/api/restaurants/{{id}}
 
 ###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants
+Content-Type: application/json
+
+{
+  "Name": "Sample Restaurant",
+  "Description": "A sample description of the restaurant.",
+  "Category": "Italian",
+  "HasDelivery": true,
+  "ContactEmail": "contact@samplerestaurant.com",
+  "ContactNumber": "123-456-7890",
+  "City": "Sample City",
+  "Street": "123 Sample Street",
+  "PostalCode": "12345"
+}
+
+###
