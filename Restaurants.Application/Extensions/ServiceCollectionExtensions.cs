@@ -9,6 +9,7 @@ namespace Restaurants.Application.Extensions
         {
             
             services.AddScoped<IRestaurantsService, RestaurantsService>();
+            services.AddAutoMapper(typeof(ServiceCollectionExtensions).Assembly);
         }
     }
 }
