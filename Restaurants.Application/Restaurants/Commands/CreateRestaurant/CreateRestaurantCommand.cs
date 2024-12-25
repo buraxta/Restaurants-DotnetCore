@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
-namespace Restaurants.Application.Restaurants.Dtos
+namespace Restaurants.Application.Restaurants.Command.CreateRestaurant
 {
-    public class CreateRestaurantDto
+    public class CreateRestaurantCommand : IRequest<int> //return type int
     {
-
         public string Name { get; set; } = default!;
         public string Description { get; set; } = default!;
- 
+
         public string Category { get; set; } = default!;
         public bool HasDelivery { get; set; }
         public string? ContactEmail { get; set; }
@@ -21,6 +15,5 @@ namespace Restaurants.Application.Restaurants.Dtos
         public string? City { get; set; }
         public string? Street { get; set; }
         public string? PostalCode { get; set; }
-
     }
 }

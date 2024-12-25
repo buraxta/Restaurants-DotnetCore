@@ -3,13 +3,13 @@
 using FluentValidation;
 using Restaurants.Application.Restaurants.Dtos;
 
-namespace Restaurants.Application.Restaurants.Validators
+namespace Restaurants.Application.Restaurants.Command.CreateRestaurant
 {
-    public class CreateRestaurantDtoValidators: AbstractValidator<CreateRestaurantDto>
+    public class CreateRestaurantCommandValidator : AbstractValidator<CreateRestaurantCommand>
     {
-        public CreateRestaurantDtoValidators()
+        public CreateRestaurantCommandValidator()
         {
-            RuleFor(x => x.Name).Length(3,100);
+            RuleFor(x => x.Name).Length(3, 100);
             RuleFor(x => x.Description).NotEmpty().WithMessage("Description is required");
             RuleFor(x => x.Category).NotEmpty().WithMessage("Category is required");
             RuleFor(x => x.ContactEmail).EmailAddress().WithMessage("Insert a valid email");
