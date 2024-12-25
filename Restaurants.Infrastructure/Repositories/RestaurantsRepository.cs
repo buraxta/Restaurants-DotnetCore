@@ -35,5 +35,12 @@ namespace Restaurants.Infrastructure.Repositories
                 .FirstOrDefaultAsync(r => r.Id == id);
             return restaurant;
         }
+
+        public async Task<int> Update(Restaurant restaurant)
+        {
+            dbContext.Restaurants.Update(restaurant);
+            await dbContext.SaveChangesAsync();
+            return restaurant.Id;
+        }
     }
 }

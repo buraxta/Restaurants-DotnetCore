@@ -25,3 +25,17 @@ Content-Type: application/json
 DELETE {{Restaurants.API_HostAddress}}/api/restaurants/1
 
 ###
+
+
+
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/2
+Content-Type: application/json
+
+{
+  "name": "Buraasdadaksss",
+      "description": "McDonald's Corporation (McDonald's), incorporated on December 21, 1964, operates and franchises McDonald's restaurants."
+
+
+}
+
+###
