@@ -14,6 +14,14 @@ namespace Restaurants.Infrastructure.Repositories
             return restaurant.Id;
         }
 
+        public void Delete(int id)
+        {
+            var restaurant = dbContext.Restaurants.Find(id);
+            if (restaurant is null) return;
+            dbContext.Restaurants.Remove(restaurant);
+            dbContext.SaveChanges();
+        }
+
         public async Task<IEnumerable<Restaurant>> GetAllAsync()
         {
             var restaurants = await dbContext.Restaurants.ToListAsync();
