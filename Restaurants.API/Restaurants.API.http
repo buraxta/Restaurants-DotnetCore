@@ -39,3 +39,15 @@ Content-Type: application/json
 }
 
 ###
+@restaurantId = 2
+POST {{Restaurants.API_HostAddress}}/api/restaurant/2/dishes
+Content-Type: application/json
+
+{
+  "Name": "Deneme",
+  "Description": "Description",
+  "Price": 18,
+  "KiloCalories": 750
+}
+
+###
