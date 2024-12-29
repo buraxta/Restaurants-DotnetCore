@@ -24,6 +24,7 @@ internal class RestaurantsDbContext(DbContextOptions<RestaurantsDbContext> optio
         modelBuilder.Entity<Restaurant>()
             .HasMany(r => r.Dishes)
             .WithOne()
-            .HasForeignKey(d => d.RestaurantId);
+            .HasForeignKey(d => d.RestaurantId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

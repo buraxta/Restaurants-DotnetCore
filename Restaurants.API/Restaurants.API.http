@@ -51,3 +51,16 @@ Content-Type: application/json
 }
 
 ###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurant/1/dishes
+
+###
+
+@dishId=0
+GET {{Restaurants.API_HostAddress}}/api/restaurant/2/dishes/3
+
+###
+
+DELETE {{Restaurants.API_HostAddress}}/api/restaurant/{{restaurantId}}/dishes
+
+###
