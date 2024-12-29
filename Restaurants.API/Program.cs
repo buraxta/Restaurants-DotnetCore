@@ -5,6 +5,7 @@ using Serilog;
 using Microsoft.Extensions.Configuration;
 using Serilog.Events;
 using Restaurants.API.Middleware;
+using Restaurants.Domain.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,6 +45,8 @@ app.UseSwaggerUI();
 // Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
+
+app.MapIdentityApi<User>();
 
 app.UseAuthorization();
 
