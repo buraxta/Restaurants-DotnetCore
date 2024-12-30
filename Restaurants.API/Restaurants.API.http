@@ -1,11 +1,12 @@
 @host = https://localhost
 @port = 7005
+@token = CfDJ8FCRYhvmWphIv6S-CTkGGfJLKpJKnrih1irpCG8uGl8XfnR4aQqa2-CEyWu-S8Vfq7d9oP4ar9LgqJ4d3FhTUQwJm-Hcn0AJCHqqqEtLMdY4pveYhxV4SYf4miD4EXtQPhZfvniPRXgo3w_wvmFDfID0OFBsKJ2xyFe4aVNM6D_37w79ZzcMQCFUW4A8prReOGPTogLhcPALLp0wo9D03wMdj8RSXPEH0J9Q1xkvr0d8efE6ZT4O4LJRnBiqQgXNPmdi-ADxIOjn7DkZTTvhEFsNUnOy8Td5qOcxlmfWlXQ6pmEklBOtcMPESOH0xkYJ8otInxcuMDQ9CIikKB-L0iH4scneUrUWMU5wHGa0srtoKPY5GyTy5FHM40kHQFuSR7Ky58cilCKt2fEZ5uzWEsn01KuQWm7u77Wh53jQmXpKMGoBw8RtWQ16suAMEEo0eQYF5gYVXNiDO-_v60hdOymeaYPHQQ1UdwVq88e_W0aMAhLC5U06RrbjZTvQHb4KOTrddOwcu1jb8DO0j0igAoErSCDVQM1dSWAu7ApbHdlzKp0P2Ghbn5zEp0cw9SP0pNpJ6GAE78yDWtaj_uggHfjyL27fxIN3CYySQusjaZT9JP0cQBUI6Ptmbp1gMWzTqbWMnAEWehVcupro-GTUv7So7S7ITbMvNwJKEgvKYfEc
 
 @Restaurants.API_HostAddress = https://localhost:7160
 
 
 GET {{Restaurants.API_HostAddress}}/api/restaurants
-
+Authorization: Bearer {{token}}
 ###
 
 @id=2
@@ -65,7 +66,7 @@ DELETE {{Restaurants.API_HostAddress}}/api/restaurant/{{restaurantId}}/dishes
 
 ###
 
-POST  {{Restaurants.API_HostAddress}}/register
+POST  {{Restaurants.API_HostAddress}}/api/identity/register
 Content-Type: application/json
 
 {
@@ -75,7 +76,7 @@ Content-Type: application/json
 
 ###
 
-POST  {{Restaurants.API_HostAddress}}/login
+POST  {{Restaurants.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {
