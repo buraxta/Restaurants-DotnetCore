@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Restaurants.Domain.Entities;
 using Restaurants.Domain.Repositories;
+using Restaurants.Infrastructure.Authorization;
 using Restaurants.Infrastructure.Persistence;
 using Restaurants.Infrastructure.Repositories;
 using Restaurants.Infrastructure.Seeders;
@@ -27,5 +28,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IRestaurantsSeeders, RestaurantsSeeders>();
         services.AddScoped<IRestaurantRepository, RestaurantsRepository>();
         services.AddScoped<IDishesRepository, DishesRepository>();
+        services.AddAuthorizationBuilder()
+            .AddPolicy(PolicyNames.HasNationality, policy => policy.RequireClaim(PolicyNames.HasNationality, "German", "Turkish"));
     }
 }

@@ -1,6 +1,6 @@
 @host = https://localhost
 @port = 7005
-@token = CfDJ8FCRYhvmWphIv6S-CTkGGfKm25EIZnwWEV1MNgarKPyJ6moPFQUXIFkKtmjIooh6ZD6dl99ze7o8FI1vr0ZWTHpptHZU6D_Rpo3DOqIWWVy8ROpmbFSQ_Y3D4NwE17L054OKAte4aOVXpYDnR84RBb02LiI0IiI-zdSYFZ1YCyRto0LrrITGpxY7F437c5v-Ig2m7FpQXJRz2HrF5e3VK6oTPYhOL32pmY8Hkxqgz5vv7W9H-ewhZfsih0040vuFrONDPzQPqTM3b2yCEBg0x8D1wN-CFx7QLfgRWanwdBsWp9IMAl_mFvSBbxsHiYX6rTkRxASHxFU2HdFibgnJQpOeu8oA1S7gKl8mMAahItbgvbe7JQnCKkAuZ1zr0y99HasSC7XICr6zqYLlvfpK6p2KlcsB131v6Eq3QnFtIaSFXU7aEIf6gogvzgxxm5v8vxtSqrWI3dG-vrTbLZcrfVbSLfwn985K04q3O10cwY7bi6sArq8v0waqn3e4uFlftmSanjapRxKmGvq7VT6MEIgx5PmDJvu89K2io4OZVydxlBRc5MpanUa11lD97juX7azEQAyPykTTm7fpAR5Djpw1vQ2CCZh2oamRw2_t1I9qYmugzOctMMS6xKvT3XU14TW6ue6c9r43USDYviYGSlajBsCCtwBvuqwe8okQ3tB52ig5HtfYcQ-PFJT73Izpsi3-ox3CvYtWHwh6rztsAIMMeoEpiBoxYySowae_70h2VfOFHsuSTcPJWA7LcJp4jg
+@token = CfDJ8FCRYhvmWphIv6S-CTkGGfLPwbcp3DzvHB7hCMD9YniF4F5H1umijyiNwT4PXTVBJh564BSc9QMbbMHYNKU32WFj8TCLVefeCKpuj38qo3uJKYDAxg-Jbi-iaNnnVpbRYSSwogiYHsVzv8k0bdwWb8X4sFNBDDnwz2P8BVeRE76dgCLLIhaWz5nTqU6_jT_t_VeHPfUjg8D55Uczmdms8Ln10OEBaoW0IsMdgchHewE4gtBT1AQPdFqe2iUF509qkEk1e-JJfCD648Sv1hoDJplurW53Y0YjKuXb9syTFPKPyJrHpxD84TJ37lfyNs335fOb3Nd4DbhqxeJs3RG0caU9f4ls8ka6NT0q7k98P29ctIL6Gsa-x2UcXroa8dshm-x4pD4Bie8iUAM0G1N7wlBiObghGY5eGB7wQLk9RBZdu0JOxf99WkDw90FahOdLUeYE_wFeAmxzRNz6jE_OM9SbVbDIUCylKzfCcjE5yZcywDi-j31_-V0BEDVYiP2e6EYnRnFpz9weyzlZx3hG-Qfc0reIeIxl5iepbYj4x7l0pWSgXdIZRFbbTa-FbknMjJyBVO3wz1K4zefvbZw95gLE_vOpJ3IeZCC2zdmq65TFfW_IexxN8F_HZNWBDXVoHhIYmLhflxqZPpiTZ9cAQzICdagbrP14pRmgaDjtET_93pPSlk9-O0__hyk7vQWjr4osLMei5oGnWwvuFXRMys4Qp5IxA70L8hIU1fZWyKFC1jRmJfok7sGWVweqTBcuOOxeBGnTNPNWODbrinikezM
 
 @Restaurants.API_HostAddress = https://localhost:7160
 
@@ -9,9 +9,9 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants
 Authorization: Bearer {{token}}
 ###
 
-@id=2
+@id=3
 GET {{Restaurants.API_HostAddress}}/api/restaurants/{{id}}
-
+Authorization: Bearer {{token}}
 ###
 
 POST {{Restaurants.API_HostAddress}}/api/restaurants
@@ -80,7 +80,7 @@ POST  {{Restaurants.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {
-  "email": "b@g.com",
+  "email": "owner@g.com",
   "password": "60403Res..!",
   "twoFactorCode": "string",
   "twoFactorRecoveryCode": "string"
