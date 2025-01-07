@@ -81,8 +81,12 @@ Content-Type: application/json
 
 {
   "email": "admin@g.com",
-  "password": "60403Res..!"
+  "password": "60403Res..!",
+  "twoFactorCode": "string",
+  "twoFactorRecoveryCode": "string"
 }
+
+###
 
 PATCH {{Restaurants.API_HostAddress}}/api/identity
 Content-Type: application/json
@@ -92,3 +96,13 @@ Content-Type: application/json
 }
 
 ###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/userRole
+Content-Type: application/json
+Authorization: Bearer CfDJ8FCRYhvmWphIv6S-CTkGGfIppw0WTTPgvwGRPzx6eV3CS0zQuQ3k1z8GoBwcYbf56evGrNhJvwVNNabC2iCmbbuYv8IzTpZi_UIvLmVMlmoE8u3pVN8WdvQL5_rO6uiSpCKpCZmwYQEpP6FcxdI1q63RMLJ30esb6A9AtAJk3njbxEdvoQVqhTdX-CSaFHpji479iBjJvam3_BwqOv29RpP68_Ok5n0esMVcoGRc_C6g38noEty-CL-_2Ac4oEwNOT-yZHPLbsO-mngP7MODbiIhRnHA57GYDBr4Hpa0nWi0fYYyaYLHNuokvoDyS1xGyV70No-0VUEXbI4_0pK-ttiGV5NbGEkkF4rggJLviVBR0XrXvNc45-WKI3gcP28ixJ77pvUf7DlWzGLAc-AGVLpby13igVg4AXq5Skr_LmGxc577b2VCZmvCHa1dCf7c9QE8k7IcwcEbs3qunA7FaoWuklakBYGa1y_ThTkEA3bKI94lOmUhrCr1U_6E_oUIZAaRKwBGvBnqMx6ol-JeGuTsqJdqIjD4HznB9dRrwFH0ExInUi7-vAD0DtSC3lg6LyDg-yVi2I8-A8ER_hjCRx-D9HqQVc48Flvmv-vZdrSDKnHnd9Hch6BpWAyIb0afB_VG8N4gg7T5rz0Wd9PxNDQ8eWlyxy9mQC5JtveJyLuLef6MWhkPPBaKJtIZ4VxBMxmtxMfWBctU3uS8GQGjUWf5KZK8eU-4-m-aBgNkhc7wQNSZ6_SKyMdiBeneQCTB0_0MeIlONE4Ezd7CKQDfomA
+{
+  
+  "userEmail": "b@g.com",
+  "roleName": "User"
+  
+}
