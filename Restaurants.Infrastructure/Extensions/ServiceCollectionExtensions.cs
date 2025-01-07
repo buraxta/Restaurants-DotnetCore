@@ -21,6 +21,7 @@ public static class ServiceCollectionExtensions
 
         services.AddIdentityApiEndpoints<User>()
             .AddRoles<IdentityRole>()
+            .AddClaimsPrincipalFactory<RestaurantsUserClaimsPrincipalFactory>()
             .AddEntityFrameworkStores<RestaurantsDbContext>();
 
         services.AddScoped<IRestaurantsSeeders, RestaurantsSeeders>();
