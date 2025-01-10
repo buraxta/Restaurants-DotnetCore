@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using System.ComponentModel.DataAnnotations;
 
 namespace Restaurants.Application.Restaurants.Command.CreateRestaurant
 {
@@ -14,6 +15,8 @@ namespace Restaurants.Application.Restaurants.Command.CreateRestaurant
 
         public string? City { get; set; }
         public string? Street { get; set; }
+
+        [RegularExpression(@"^\d{2}-\d{3}$", ErrorMessage = "Insert a valid postal code")]
         public string? PostalCode { get; set; }
     }
 }
