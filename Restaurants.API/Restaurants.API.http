@@ -1,6 +1,6 @@
 @host = https://localhost
 @port = 7005
-@token = CfDJ8FCRYhvmWphIv6S-CTkGGfLPwbcp3DzvHB7hCMD9YniF4F5H1umijyiNwT4PXTVBJh564BSc9QMbbMHYNKU32WFj8TCLVefeCKpuj38qo3uJKYDAxg-Jbi-iaNnnVpbRYSSwogiYHsVzv8k0bdwWb8X4sFNBDDnwz2P8BVeRE76dgCLLIhaWz5nTqU6_jT_t_VeHPfUjg8D55Uczmdms8Ln10OEBaoW0IsMdgchHewE4gtBT1AQPdFqe2iUF509qkEk1e-JJfCD648Sv1hoDJplurW53Y0YjKuXb9syTFPKPyJrHpxD84TJ37lfyNs335fOb3Nd4DbhqxeJs3RG0caU9f4ls8ka6NT0q7k98P29ctIL6Gsa-x2UcXroa8dshm-x4pD4Bie8iUAM0G1N7wlBiObghGY5eGB7wQLk9RBZdu0JOxf99WkDw90FahOdLUeYE_wFeAmxzRNz6jE_OM9SbVbDIUCylKzfCcjE5yZcywDi-j31_-V0BEDVYiP2e6EYnRnFpz9weyzlZx3hG-Qfc0reIeIxl5iepbYj4x7l0pWSgXdIZRFbbTa-FbknMjJyBVO3wz1K4zefvbZw95gLE_vOpJ3IeZCC2zdmq65TFfW_IexxN8F_HZNWBDXVoHhIYmLhflxqZPpiTZ9cAQzICdagbrP14pRmgaDjtET_93pPSlk9-O0__hyk7vQWjr4osLMei5oGnWwvuFXRMys4Qp5IxA70L8hIU1fZWyKFC1jRmJfok7sGWVweqTBcuOOxeBGnTNPNWODbrinikezM
+@token = CfDJ8FCRYhvmWphIv6S-CTkGGfKrp1m54YIrIS9ctyStL8Wus2tCqP44uvhCa4UCcoeRJMnN8pMO2WEuh2TGvHjaOG6Gwfzfv_PbQ309hHLlshuTFs6omsOhk32g4Ld5zcVOz9K5CcgtXvRjIh0WZXYV4uUvfpHSidn9Wkl3cowpOIkWJ0zvOAuGmjyUUtCS63S9QdYKVcx7z_lZ_HS00yFOgW-WkKFwhAAL0eO3fZYYXnRJlvGvpZg8Ab_bDq8mDyMbm4DqM7t-n3Cs2qd1lpTdHWkW3fze-pOfftBcbKODz6WKCIyqPSxiVXgYa6XnljusBsp3eDlJ0xQNufCLyACDLrdBlGlcRURtA99Qo7xomSjabzDZOwjKhp6b9IqGPHlMkuNlzpJyCdMxYrkmBYikCP9cdtgWB_9NGCFZcPWc75j1Xzh-HgBbvFXXBpeMlhTodFbv0gIq4bX9vnOKQ3rFwGXHsD8J0TpjjQatL7UX8nH4OtYX1U-2mYyU8o5YQ29tn4QOKcqdW5FDmW-rnLzNkVr25ky4kzCR32XoLd4uJgdUWXcb4uZ5i3AvYTJvAqK4RVyb-kcqPOJ0-WhTgAdZJiMg0uuk_zOq3_k4Ip-7lFLamGIMC5Fr6HpCp0OePaz2ks5OcCeScpIZ7otj0y356hh-WSiq6p2TrtMtCedvpD2gT-KzigR0jlomtn6U_EjVsHPflXfRI-li_m_r1NouCOnC-25MXyJzO_cTtgI0Dv3C8Gm532dMqYREvwgY2B4hqt5_nN6ects3m_b7cvhOqAA
 
 @Restaurants.API_HostAddress = https://localhost:7160
 
@@ -9,8 +9,8 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants
 Authorization: Bearer {{token}}
 ###
 
-@id=3
-GET {{Restaurants.API_HostAddress}}/api/restaurants/{{id}}
+@id=4
+GET {{Restaurants.API_HostAddress}}/api/restaurants/3/dishes
 Authorization: Bearer {{token}}
 ###
 
@@ -31,11 +31,11 @@ DELETE {{Restaurants.API_HostAddress}}/api/restaurants/1
 
 PATCH {{Restaurants.API_HostAddress}}/api/restaurants/2
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "name": "Buraasdadaksss",
       "description": "McDonald's Corporation (McDonald's), incorporated on December 21, 1964, operates and franchises McDonald's restaurants."
-
 
 }
 
