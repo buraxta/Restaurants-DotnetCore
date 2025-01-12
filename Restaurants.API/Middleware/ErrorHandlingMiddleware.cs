@@ -17,6 +17,12 @@ namespace Restaurants.API.Middleware
                 await context.Response.WriteAsync(notFound.Message);
                 logger.LogWarning(notFound.Message);
             }
+            catch (ForbidException forbid)
+            {
+                context.Response.StatusCode = 403;
+                await context.Response.WriteAsync("You are not authorized to perform this action");
+                logger.LogWarning(forbid.Message);
+            }
             catch (Exception ex)
             {
                 logger.LogError(ex, ex.Message);

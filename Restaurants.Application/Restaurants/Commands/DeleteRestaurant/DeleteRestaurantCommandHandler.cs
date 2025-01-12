@@ -1,17 +1,16 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
+using Restaurants.Domain.Constants;
+using Restaurants.Domain.Exceptions;
 using Restaurants.Domain.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Restaurants.Infrastructure.Authorization.Services;
 
 namespace Restaurants.Application.Restaurants.Commands.DeleteRestaurant
 {
     public class DeleteRestaurantCommandHandler(
         ILogger<DeleteRestaurantCommandHandler> logger,
-        IRestaurantRepository restaurantRepository
+        IRestaurantRepository restaurantRepository,
+        IRestaurantAuthorizationService restaurantAuthorizationService
         ) : IRequestHandler<DeleteRestaurantCommand, bool>
     {
         public async Task<bool> Handle(DeleteRestaurantCommand request, CancellationToken cancellationToken)
@@ -23,6 +22,12 @@ namespace Restaurants.Application.Restaurants.Commands.DeleteRestaurant
             {
                 logger.LogWarning("Restaurant with id {Id} not found", request.Id);
                 return false;
+            }
+
+            if (!restaurantAuthorizationService.Authorize(restaurant, ResourceOperation.Delete))
+            {
+                logger.LogWarning("User not authorized to delete restaurant with id {Id}", request.Id);
+                throw new ForbidException();
             }
 
             restaurantRepository.Delete(request.Id);

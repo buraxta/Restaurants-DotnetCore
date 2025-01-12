@@ -1,19 +1,18 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using Restaurants.Domain.Constants;
+using Restaurants.Domain.Exceptions;
 using Restaurants.Domain.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Restaurants.Infrastructure.Authorization.Services;
 
 namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant
 {
     public class UpdateRestaurantCommandHandler(
         ILogger<UpdateRestaurantCommandHandler> logger,
         IMapper mapper,
-        IRestaurantRepository restaurantRepository
+        IRestaurantRepository restaurantRepository,
+        IRestaurantAuthorizationService restaurantAuthorizationService
         ) : IRequestHandler<UpdateRestaurantCommand, int>
     {
         public async Task<int> Handle(UpdateRestaurantCommand request, CancellationToken cancellationToken)
@@ -33,6 +32,12 @@ namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant
             //restaurant.HasDelivery = request.HasDelivery ?? restaurant.HasDelivery;
             //restaurant.ContactEmail = request.ContactEmail ?? restaurant.ContactEmail;
             //restaurant.ContactNumber = request.ContactNumber ?? restaurant.ContactNumber;
+
+            if (!restaurantAuthorizationService.Authorize(restaurant, ResourceOperation.Update))
+            {
+                logger.LogWarning("User not authorized to delete restaurant with id {Id}", request.Id);
+                throw new ForbidException();
+            }
 
             await restaurantRepository.Update(restaurant);
             logger.LogInformation("Restaurant updated {@Dto}", restaurant);

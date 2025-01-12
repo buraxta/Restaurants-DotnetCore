@@ -11,7 +11,7 @@ namespace Restaurants.Application.Restaurants.Command.CreateRestaurant
             RuleFor(x => x.Description).NotEmpty().WithMessage("Description is required");
             RuleFor(x => x.Category).NotEmpty().WithMessage("Category is required");
             RuleFor(x => x.ContactEmail).EmailAddress().WithMessage("Insert a valid email");
-            RuleFor(x => x.PostalCode).Matches(@"^\d{5}-\d{3}$").WithMessage("Insert a valid postal code");
+            RuleFor(x => x.PostalCode).Matches(@"^\d{2}-\d{3}$").WithMessage("Insert a valid postal code");
         }
     }
 }
