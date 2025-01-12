@@ -5,6 +5,7 @@ namespace Restaurants.Infrastructure.Authorization
     {
         public const string HasNationality = "HasNationality";
         public const string AtLeaset20 = "AtLeaset20";
+        public const string CreatedMultipleRestaurants = "CreatedMultipleRestaurants";
 
     } 
     public static class AppClaimTypes
