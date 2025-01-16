@@ -9,7 +9,7 @@ namespace Restaurants.Application.Restaurants.Queries.GetAllRestaurants
 {
     public class GetAllRestaurantsQueryHandler(ILogger<GetAllRestaurantsQueryHandler> logger,
         IMapper mapper,
-        IRestaurantRepository restaurantRepository) : IRequestHandler<GetAllRestaurantsQuery, IEnumerable<RestaurantDto>>
+        IRestaurantRepository restaurantRepository) : IRequestHandler<GetAllRestaurantsQuery, PagedResults<RestaurantDto>>
     {
         public async Task<IEnumerable<RestaurantDto>> Handle(GetAllRestaurantsQuery request, CancellationToken cancellationToken)
         {
