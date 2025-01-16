@@ -1,8 +1,10 @@
 ﻿using Azure.Core;
 using Microsoft.EntityFrameworkCore;
+using Restaurants.Domain.Constants;
 using Restaurants.Domain.Entities;
 using Restaurants.Domain.Repositories;
 using Restaurants.Infrastructure.Persistence;
+using System.Linq.Expressions;
 
 namespace Restaurants.Infrastructure.Repositories
 {
@@ -31,7 +33,9 @@ namespace Restaurants.Infrastructure.Repositories
             return restaurants;
         }
 
-        public async Task<(IEnumerable<Restaurant>, int)> GetAllMatchingAsync(string? searchPhrase, int pageSize, int pageNumber)
+        public async Task<(IEnumerable<Restaurant>, int)> GetAllMatchingAsync(string? searchPhrase, int pageSize, int pageNumber,
+            string? sortBy, SortDirection sortDirection
+            )
         {
             var query = dbContext.Restaurants.AsQueryable();
 
@@ -41,9 +45,26 @@ namespace Restaurants.Infrastructure.Repositories
                 query = query.Where(r => r.Name.ToLower().Contains(searchPhraseLower)
                                       || (r.Description != null && r.Description.ToLower().Contains(searchPhraseLower)));
             }
+
             var totalCount = await query.CountAsync();
 
-            var restaurants = await query
+            if (!string.IsNullOrWhiteSpace(sortBy))
+            {
+                var columnSelector = new Dictionary<string, Expression<Func<Restaurant, object>>>
+                {
+                    { nameof(Restaurant.Name), r => r.Name },
+                    { nameof(Restaurant.Description), r => r.Description },
+                    { nameof(Restaurant.Category), r => r.Category },
+                };
+
+                var selectedColumn = columnSelector[sortBy];
+
+                query = sortDirection == SortDirection.Ascending 
+                    ? query.OrderBy(selectedColumn)
+                    : query.OrderByDescending(selectedColumn);
+            }
+
+                var restaurants = await query
                 .Skip(pageSize * (pageNumber - 1))
                 .Take(pageSize)
                 .ToListAsync();
